@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article achat vente{% endblock %}
+{% block body %}
+<div class="container">
+   <div class="row mt-5">
+         <div class="col-md-12 py-3">{{article.name}}</div>
+         <div class='col-md-12'>
+            <ul class="rating">
+            <span><i class="fas fa-star start_co"></i></span>
+            <span><i class="fas fa-star start_co"></i></span>
+            <span><i class="fas fa-star start_co"></i></span>
+            <span><i class="fas fa-star start_co"></i></span>
+           
+         </ul>
+      </div>
+   </div>
+<div class="row">
+<div class="col-md-8">
+   <img src="{{article.imageLink1}}" alt="">
+</div>
+<div class="col-md-4">
+     <div>
+        <h3>{{article.price}}FCFA</h3>
+     </div>
+     <div>
+       <p>{{article.detailProduct}}</p>
+
+     </div>
+     
+      <a href='' class='my-2 b-act'>reserver</a>
+      <a href='' class='b-act-s'>contacter</a>
+   
+</div>
+
+</div>
+
+
+<div class="row">
+ <div class="col-md-12 py-3">
+    <h3>Description</h3>
+    <p>{{article.bref}}</p>
+ </div>
+ <div class="col-md-12 py-3">
+   <h3>Conditions de ventes</h3>
+   <p>{{article.saleConditions}}</p>
+</div>
+
+
+</div>
+                     
+  
+</div>
+{% endblock %}
+
