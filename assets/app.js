@@ -12,3 +12,5 @@ import './styles/app.scss';
 import './bootstrap';
 // or, specify which plugins you need:
 import { Tooltip, Toast, Popover } from 'bootstrap';
+
+import "./slideshow";

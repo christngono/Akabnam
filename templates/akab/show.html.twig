@@ -3,22 +3,43 @@
 {% block title %}Article achat vente{% endblock %}
 {% block body %}
 <div class="container">
+   <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Découverte</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Restaurant</li>
+      </ol>
+    </nav>
    <div class="row mt-5">
-         <div class="col-md-12 py-3">{{article.name}}</div>
+         <div class="col-md-12 py-3"><h1>{{article.name| title}}</h1></div>
          <div class='col-md-12'>
             <ul class="rating">
             <span><i class="fas fa-star start_co"></i></span>
             <span><i class="fas fa-star start_co"></i></span>
             <span><i class="fas fa-star start_co"></i></span>
             <span><i class="fas fa-star start_co"></i></span>
-           
          </ul>
+         <span>(3/5)</span>
       </div>
+      <div><p>La boutique</p></div>
    </div>
 <div class="row">
-<div class="col-md-8">
-   <img src="{{article.imageLink1}}" alt="">
-</div>
+
+   <div class="col-md-8 room-gallery">
+        <img src="{{ asset('images/product1-big.jpg') }}" alt="image1" width="100%" class="rounded gallery-highlight">
+        <div class="product-preview py-2">
+           <img src="{{ asset('images/product1-small.jpg') }}" alt="" class="product-active rounded"/>
+           <img src="{{ asset('images/product2-small.jpg') }}" alt="" class="rounded"/>
+           <img src="{{ asset('images/product3-small.jpg') }}" alt="" class="rounded"/>
+        </div>
+
+
+
+   </div>
+
+
+
+
+
 <div class="col-md-4">
      <div>
         <h3>{{article.price}}FCFA</h3>
@@ -28,8 +49,8 @@
 
      </div>
      
-      <a href='' class='my-2 b-act'>reserver</a>
-      <a href='' class='b-act-s'>contacter</a>
+      <a href='' class='my-2 b-act'>Contacter</a>
+      <a href='' class='b-act-s'>Payer</a>
    
 </div>
 

@@ -1,0 +1,11 @@
+.product-preview img {
+  height: 60px;
+  width: 60px;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  border-color: #ccc;
+}
+img.product-active {
+  opacity: 1;
+}
