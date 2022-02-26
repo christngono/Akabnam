@@ -1,19 +1,23 @@
 {% extends 'base.html.twig' %}
-{% form_theme formArticle 'bootstrap_5_layout.html.twig' %}
+{% form_theme formProduct 'bootstrap_5_layout.html.twig' %}
 {% block title %}Hello AkabController!{% endblock %}
-
 {% block body %}
 
+<div class="container-fluid">
 <div class="container ">
     <h1 class='text-center'>CREER UN ARTICLE</h1>
     <div class="col-md-6 ml-3 mx-auto">
-    {{form_start(formArticle)}}
-    {{form_row(formArticle.name, {'attr': {'placeholder':'nom de l\'article'}})}}
-    {{form_row(formArticle.detail_product, {'attr': {'placeholder':"Detail de l'article"}})}}
-    {{form_row(formArticle.image_link1, {'attr': {'placeholder':'image de l\'article'}})}}
-    {{form_row(formArticle.bref, {'attr': {'placeholder':'bref decriptif'}})}}
-    {{form_row(formArticle.price, {'attr': {'placeholder':'prix de l\'article'}})}}
-     {{form_row(formArticle.sale_conditions, {'attr': {'placeholder':"condtions de ventes"}})}}
+    {{form_start(formProduct)}}
+    {{form_row(formProduct.name, {'attr': {'placeholder':'nom de l\'article'}})}}
+    {# {{form_row(formProduct.categoryProduct.title, {'attr': {'placeholder':'choisir la catégorie'}})}} #}
+    {{form_row(formProduct.imageFile)}}
+     {{form_row(formProduct.category)}}
+    {{form_row(formProduct.bref, {'attr': {'placeholder':'bref decriptif'}})}}
+    {{form_row(formProduct.price, {'attr': {'placeholder':'prix de l\'article'}})}}
+     {{form_row(formProduct.avantage, {'attr': {'placeholder':'image de l\'article'}})}}
+     {{form_row(formProduct.views)}}
+     {{form_row(formProduct.numberlike)}}
+    {{form_row(formProduct.salecondition, {'attr': {'placeholder':"condtions de ventes"}})}}
     
     <button type="submit" class="btn btn-primary">
     {% if editMode %}
@@ -24,7 +28,8 @@
     
     </button>
   
-    {{form_end(formArticle)}}
+    {{form_end(formProduct)}}
    </div>     
+</div>
 </div>
 {% endblock %}

@@ -31,6 +31,7 @@ class User
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+    public $confirmPassword;
 
     /**
      * @ORM\Column(type="datetime")

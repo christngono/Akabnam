@@ -5,11 +5,13 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Article;
-use App\Repository\ArticleRepository;
+use App\Entity\Product;
+use App\Entity\Shop;
+use App\Repository\ProductRepository;
+use App\Repository\ShopRepository;
 use DateTime;
 use Symfony\Component\HttpFoundation\Request;
-use App\Form\ArticleType;
+use App\Form\ProductType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Constraints\Date;
@@ -17,13 +19,13 @@ use Symfony\Component\Validator\Constraints\Date;
 class AkabController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(ArticleRepository $repo): Response
+    public function index(ProductRepository $repo): Response
     {
-        $articles = $repo->findAll();
+        $products = $repo->findAll();
 
         return $this->render('akab/index.html.twig', [
             'controller_name' => 'AkabController',
-            'articles' => $articles
+            'products' => $products
         ]);
     }
 
@@ -36,36 +38,58 @@ class AkabController extends AbstractController
     }
 
     #[Route('/article/{id}', name: 'show')]
-    public function show(Article $article): Response
+    public function show(Product $product): Response
 
     {
         return $this->render('akab/show.html.twig', [
             'controller_name' => 'AkabController',
-            'article' => $article
+            'product' => $product
         ]);
     }
 
-    #[Route('/boutique', name: 'showShop')]
-    public function showShop(): Response
+    #[Route('/boutique/{id}', name: 'showShop')]
+    public function showShop(Shop $shop): Response
 
     {
         return $this->render('akab/showShop.html.twig', [
+            'shop' => $shop
+
+        ]);
+    }
+
+    #[Route('/category/{id}', name: 'showCategory')]
+    public function showCategory(Product $product): Response
+
+    {
+        return $this->render('akab/showCategory.html.twig', [
+            'controller_name' => 'AkabController',
+            'product' => $product,
+
+        ]);
+    }
+
+
+    #[Route('/about', name: 'about')]
+    public function About(): Response
+
+    {
+        return $this->render('akab/about.html.twig', [
             'controller_name' => 'AkabController',
 
         ]);
     }
 
 
-    #[Route('/admin/new', name: 'create')]
-    #[Route('/admin/{id}/edit', name: 'edit_article')]
-    public function create(Article $article = null, Request $request, EntityManagerInterface $manager): Response
+    #[Route('/monadmin/new', name: 'create')]
+    #[Route('/monadmin/{id}/edit', name: 'edit_article')]
+    public function create(Product $product = null, Request $request, EntityManagerInterface $manager): Response
 
     {
-        if (!$article) {
-            $article = new Article;
+        if (!$product) {
+            $product = new Product;
         }
 
-        /* $form = $this->createFormBuilder($article)
+        /* $form = $this->createFormBuilder($product)
             ->add('name')
             ->add('detail_product', TextareaType::class)
             ->add('bref', TextareaType::class)
@@ -73,22 +97,22 @@ class AkabController extends AbstractController
             ->add('image_link1')
             ->add('price')
             ->getForm();*/
-        $form = $this->createForm(ArticleType::class, $article);
+        $form = $this->createForm(ProductType::class, $product);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            if (!$article->getId()) {
-                $article->setCreateAt(new \DateTime());
+            if (!$product->getId()) {
+                $product->setdatecreation(new \DateTime());
             }
 
-            $manager->persist($article);
+            $manager->persist($product);
             $manager->flush();
-            return $this->redirectToRoute('show', ['id' => $article->getId()]);
+            return $this->redirectToRoute('show', ['id' => $product->getId()]);
         }
 
         return $this->render('akab/create.html.twig', [
-            'formArticle' => $form->createView(),
-            'editMode' => $article->getId() !== null
+            'formProduct' => $form->createView(),
+            'editMode' => $product->getId() !== null
         ]);
     }
 }

@@ -9,7 +9,13 @@
   color: #222;
   min-height: 250px;
 }
-.bannershop {
-  background-color: #ccc;
-  min-height: 350px;
+.bannershop > img {
+  height: 400px;
+}
+.banner_category {
+  background-color: #f8ebe6;
+  color: #222;
+}
+.bcg_w {
+  background-color: #eeeeee;
 }
