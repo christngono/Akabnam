@@ -2,30 +2,33 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use DateTime;
+use App\Entity\Shop;
+use App\Entity\Product;
+use App\Entity\Category;
+use App\Form\ProductType;
+use App\Repository\ShopRepository;
+use App\Repository\ProductRepository;
+use App\Repository\CategoryRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Product;
-use App\Entity\Shop;
-use App\Repository\ProductRepository;
-use App\Repository\ShopRepository;
-use DateTime;
-use Symfony\Component\HttpFoundation\Request;
-use App\Form\ProductType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AkabController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(ProductRepository $repo): Response
+    public function index(ProductRepository $repo, ShopRepository $shops): Response
     {
         $products = $repo->findAll();
-
+        $shops = $shops->findAll();
+        
         return $this->render('akab/index.html.twig', [
-            'controller_name' => 'AkabController',
-            'products' => $products
+            'products' => $products,
+            'shops' => $shops
         ]);
     }
 
@@ -57,13 +60,14 @@ class AkabController extends AbstractController
         ]);
     }
 
-    #[Route('/category/{id}', name: 'showCategory')]
-    public function showCategory(Product $product): Response
+
+    #[Route('/category/{name}', name: 'showCategory')]
+    public function showCategory($name,Category $products): Response
 
     {
+
         return $this->render('akab/showCategory.html.twig', [
-            'controller_name' => 'AkabController',
-            'product' => $product,
+            'products' => $products
 
         ]);
     }

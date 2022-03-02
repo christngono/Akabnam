@@ -31,7 +31,7 @@
           <img src="/images/products/{{product.image}}" class="card-img-top rounded"  style="width: 100%" alt="...">
           <div class="card-body">
             <h5 class="card-name">{{product.name}}</h5>
-            <p class="card-shop">free spirit</p>
+            <p class="card-shop">{{product.shop}}</p>
             <ul class="rating">
               <span><i class="fas fa-star start_co"></i></span>
               <span><i class="fas fa-star start_co"></i></span>
@@ -77,7 +77,8 @@
           {% endfor %}
       </div>
       </div>
-      {# block loo shopping #}
+     
+
       <div class="container">
         <div class="col-md-12">
           <h2 class="titre text-center">Il nous ont font confiance</h2>
@@ -87,28 +88,16 @@
         </div>
        
           <div class="row pt-5 d-flex justify-content-between banner_simple">
-                <div class="col text-center">
-                  
-                  <img src="https://picsum.photos/100/100" class="rounded-circle" alt="...">
-                  <div>thelodge</div>
+            {% for shop in shops %}  
+            
+            <div class="col text-center">
+              <a href="{{ path('showShop', {'id' :shop.id} )}}">
+                  <img src="/images/products/{{shop.imageProfil}}" class="rounded-circle" width="100px" height="100px" alt="alt">
+                  <div>{{shop.nameshop}}</div>
+                </a>
+            </div>
+            {% endfor %}
                 
-                </div>
-                <div class="col">
-                  <img src="https://picsum.photos/100/100" class="rounded-circle" alt="...">
-                  <p>clinique beauté</p>
-                </div>
-                <div class="col">
-                  <img src="https://picsum.photos/100/100" class="rounded-circle" alt="...">
-                  <p>codeb</p>
-                </div>
-                <div class="col">
-                  <img src="https://picsum.photos/100/100" class="rounded-circle" alt="...">
-                  <p>sido</p>
-                </div>
-                <div class="col">
-                  <img src="https://picsum.photos/100/100" class="rounded-circle" alt="...">
-                  <p class=''>thelodge</p>
-                </div>
           </div>
           
 

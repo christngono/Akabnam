@@ -6,8 +6,9 @@
 
    <div aria-label="breadcrumb " style="padding-top: 50px;">
       <ol class="breadcrumb ">
-        <li class="breadcrumb-item"><a href="#">Découverte</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Restaurant</li>
+        <li class="breadcrumb-item active" aria-current="page">Acceuil</li>
+        <li class="breadcrumb-item"><a href="{{path('showCategory',{'name' :product.category})}}">{{product.category}}</a></li>
+  
       </ol>
     </div>
    <div class="row mt-2">
