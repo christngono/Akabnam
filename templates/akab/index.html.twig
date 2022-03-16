@@ -4,23 +4,26 @@
 
 {% block body %}
 <style>
-    
+       .message_p{
+          font-size:1.2rem;
+       }
 </style>
 
  {# banniere  #}
     <div class="container">
       <div class="row text-center ">
         <div class="col-md-12 mt-3 mb-3 rounded banner_simple px-4 py-5">
-          <h3>Lancer votre activite en ligne</h3>
-          <p>Créez un site e-commerce propulsé par des outils puissants qui vous aideront à trouver des clients, à augmenter vos ventes et à gérer vos opérations quotidiennes.</p>
+          <h3>Lancez votre activite en ligne</h3>
+          <p class="col-md-8 message_p mx-auto col-12">Passez moins de temps à gérer votre boutique et plus de temps sur ce qui vous amuse. Nous vous aidons à developper votre activité</p>
         </div>
-      </div> 
+      </div>  
       </div>
    {# <!-- /end_banniere simple-->  #}
     
 
       <div class="container mt-5 mb-5 ">
-        <h2 class='pb-3 title-article'>Produits les plus consultés</h2>
+        <h2 class='pb-3 title-article'>Trouvez l'article de vos rêves</h2>
+       
         <div class="row mi-h">
 
         {%for product in products %}
@@ -39,7 +42,7 @@
               <span><i class="fas fa-star start_co"></i></span>
              
             </ul>
-            <div class="card-price"><span class=''>5{{product.price}} F CFA</span></div>
+            <div class="card-price"><span class=''>{{product.price}} F CFA</span></div>
             
           </div>
               </a>
@@ -55,14 +58,16 @@
      <div class="container-fluid">
       <div class="row text-center ">
         <div class="col-md-12 mt-5 mb-5 banner_simple_vert px-4 py-5">
-          <h3>Promos de la Cyber week : jusqu'à -60 % !</h3>
+          <h3>Créez votre boutique.</h3>
+          <p class="col-md-8 message_p mx-auto col-12">Rejoignez une place de marché créative sur laquelle des milliers d'acheteurs 
+            sont impatients de découvrir ce que vous allez proposer</p>
         </div>
       </div> 
       </div>
    {# <!-- /end_banniere simple-->  #}
     <div class="container mi-h ">
-      <h2 class='text-center pb-3 '>Notre selections pour vous</h2>
-         
+      <h2 class='text-center pb-3 '>Découvrez nos meilleurs services</h2>
+     
          <div class="row d-flex justify-content-between">
        {%for product in products %}
            {# <!-- card simple-->  #}
@@ -82,9 +87,10 @@
       <div class="container">
         <div class="col-md-12">
           <h2 class="titre text-center">Il nous ont font confiance</h2>
+   
         </div>
-        <div class="col-md-12">
-          <p class="text-center">Découvrez des trouvailles uniques, pour des destinataires uniques</p>
+        <div class="col-md-8 mx-auto">
+          <p class=" text-center ">Créez votre boutique sur Akabnam, on vous accompagne à augmenter vos ventes et à gérer vos opérations quotidiennes.</p>
         </div>
        
           <div class="row pt-5 d-flex justify-content-between banner_simple">
